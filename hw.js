@@ -13,19 +13,28 @@ let dog_names = ["Max","HAS","PuRple","dog"]
 // while loop might be needed(?)
 
 function findWords(names, string){
-    let strings = string.split(' ') // splits up the string
-    for (let i = 0; i < names.length; i++) {
-        for(let j = 0; j < string.length; j++) {
-            // .search() looks for a value - in this case, it's looking for a name value in a string
-            // currently getting an error with this one: Uncaught TypeError: Cannot read properties of undefined (reading 'toLowerCase')
-            if (strings[j].toLowerCase().search(names[i].toLowerCase())) {
-                console.log(`Matched dog_name. ${names[i]}`) // JS fstring ``(backticks), `string ${expression}`
-            } else {
-                console.log("No matches.")
-            }
-        }
+  for (let x of names) {
+    if (string.includes(x)){
+      console.log(`Matched dog_name. ${names[x]}`)
+    } else {
+      console.log('No matches.')
     }
+  }
 }
+// this way is kind of lengthy
+//     let strings = string.split(' ') // splits up the string
+//     for (let i = 0; i < names.length; i++) {
+//         for(let j = 0; j < string.length; j++) {
+//             // .search() looks for a value - in this case, it's looking for a name value in a string
+//             // currently getting an error with this one: Uncaught TypeError: Cannot read properties of undefined (reading 'toLowerCase')
+//             if (strings[j].toLowerCase().search(names[i].toLowerCase())) {
+//                 console.log(`Matched dog_name. ${names[i]}`) // JS fstring ``(backticks), `string ${expression}`
+//             } else {
+//                 console.log("No matches.")
+//             }
+//         }
+//     }
+// }
 
 // unsure if they want the words to be exact matches or not with capitalization
 // assuming that it is not the case, we should be receiving only 1 match
@@ -46,8 +55,8 @@ function replaceEvens(arr){
     for (let i = 0; i < arr.length; i++) {
         if (i % 2 == 0) {
             // splice
-            arr.splice(i, 1, 'even index')
-        }
+            arr.splice(i, 1, 'even index') // thank you w3schools (index, howmany removed, new element to be added)
+        } // ^replace 1 item at index i and replace it with 'even index'
     }
     return arr
 } // why is 0 considered even in JS?
